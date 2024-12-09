@@ -161,7 +161,7 @@ function readStream(streamFile, chatFile, pidStreamFile) {
   // Last token finish reason
   const finishReason = chunks.slice(-1)[0]["choices"][0]["finish_reason"]
 
-  // If reponse is not finished, continue loop
+  // If response is not finished, continue loop
   if (!finishReason) return JSON.stringify({
     rerun: 0.1,
     variables: { streaming_now: true },
@@ -177,7 +177,7 @@ function readStream(streamFile, chatFile, pidStreamFile) {
   // Mention finish reason in footer
   const footerText = (function() {
     switch (finishReason) {
-      case "legth": return "Maximum number of tokens reached"
+      case "length": return "Maximum number of tokens reached"
       case "content_filter": return "Content was omitted due to a flag from OpenAI content filters"
     }
   })()
